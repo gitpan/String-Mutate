@@ -5,7 +5,7 @@ use Class::Prototyped;
 BEGIN {
     use Exporter ();
     use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-    $VERSION     = '0.01';
+    $VERSION     = '0.03';
     @ISA         = qw(Exporter);
     #Give a hoot don't pollute, do not export more than needed by default
     @EXPORT      = qw();
@@ -108,7 +108,7 @@ sub insert {
 sub chunk_of_junk {
   my ($self, $chunk_length) = @_;
 
-  $chunk_length or die 'must supply chunk length' ;
+  defined $chunk_length or die 'must supply chunk length' ;
 
   my $chunk;
 
@@ -186,7 +186,6 @@ here are the pre-packaged string mutators
 
  Usage     : $proto->m_append('some text to append');
  Purpose   : Append text to $proto->string
- Returns   : nothing. this is OOP you know.
  Argument  : the text to append.
 
 =cut
@@ -195,7 +194,6 @@ here are the pre-packaged string mutators
 
  Usage     : $proto->m_prepend('some text to PREpend');
  Purpose   : Prepend text to $proto->string
- Returns   : nothing. this is OOP you know.
  Argument  : the text to Prepend.
 
 =head2 m_insert
@@ -236,19 +234,7 @@ here are the pre-packaged string mutators
 
 =head1 BUGS
 
-There are rougly 3,562,803 bugs in this code and I am offering every woman
-on this earth a chance to sleep with me should you report one within the 
-next 333,333,333 seconds... assuming there is still a Planet Earth around
-given what Mister You Know Who in the You Know What House is doing to 
-"civilization" as we know/knew it. I wonder if kahnivoa picks up on 
-such indirect innuendos to unohoo.
-
-=head1 SUPPORT
-
-Wait a minute, support?! I'm I<giving> you this module for free and you
-have the nerve to read the support section??? What is this world coming
-too. Ok, ok if you have beachfront property in California or a tough-looking
-uncle named Rocko in Queens, NY I'm sure we can workk something out.
+There are rougly 3,562,803 bugs in this code. 
 
 
 =head1 AUTHOR
@@ -270,14 +256,6 @@ LICENSE file included with this module.
 
 =head1 SEE ALSO
 
-perl(1).
-L<ExtUtils::ModuleMaker|ExtUtils::ModuleMaker> by the one and only
-James Keenan. Without that, I would've had to type
-
-  h2xs -A -X -n String::Mutate
-
-and that is an unthinkable inconvenience in this Modern Space Age of 
-HiTekPerlDevelopment.
 
 
 =cut
