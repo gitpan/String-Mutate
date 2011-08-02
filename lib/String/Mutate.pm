@@ -5,7 +5,7 @@ use Class::Prototyped;
 BEGIN {
     use Exporter ();
     use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-    $VERSION     = '0.03';
+    $VERSION     = '0.04';
     @ISA         = qw(Exporter);
     #Give a hoot don't pollute, do not export more than needed by default
     @EXPORT      = qw();
@@ -79,6 +79,7 @@ sub append {
     my ($self, $text) = @_;
 
     $self->string($self->string . $text);
+$self;
 }
 
 sub prepend {
@@ -86,6 +87,7 @@ sub prepend {
     my ($self, $text) = @_;
 
     $self->string($text . $self->string);
+$self;
 }
 
 sub insert {
@@ -103,6 +105,7 @@ sub insert {
     my $post = substr($self->string, $position);
     my $out  = "$pre$text$post";
     $self->string($out);
+$self;
 }
 
 sub chunk_of_junk {
@@ -120,7 +123,7 @@ sub chunk_of_junk {
 
 
   $self->m_rand_insert($chunk);
-
+$self;
 }
 
 #################### main pod documentation begin ###################
@@ -166,6 +169,7 @@ mucker-uppers you saw in the SYNOPSIS. But you are dealing with a
 L<Class::Prototyped|Class::Prototyped> object, so you can extend the 
 beskimmers out of it if you so please.
 
+And now.... method chaining!
 
 =head1 USAGE
 
@@ -176,7 +180,7 @@ First you construct your prototype object:
  my $proto = String::Mutate->proto;
 
 Then you call any of the C<m_*> methods which will then mutate
-C<$proto->string> and leave the results in same. So without further adieu,
+C<< $proto->string >> and leave the results in same. So without further adieu,
 here are the pre-packaged string mutators
 
 =head2 BUILT-IN STRING MUTATION METHODS 
@@ -241,9 +245,9 @@ There are rougly 3,562,803 bugs in this code.
 
     Terrence M. Brannon
     CPAN ID: TBONE
-    metaperl.com Computation
+    metaperl.org computation
     tbone@cpan.org
-    http://www.metaperl.com
+    http://www.metaperl.org
 
 =head1 COPYRIGHT
 
